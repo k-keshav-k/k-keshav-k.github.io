@@ -1,0 +1,603 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Keshav Krishna | MSCS @ NYU Courant</title>
+    <meta name="description" content="Portfolio of Keshav Krishna - Software Engineer, Data Scientist, and Researcher. MS CS at NYU Courant.">
+    
+    <!-- Fonts: Inter for copy, JetBrains Mono for headers/code -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        mono: ['JetBrains Mono', 'monospace'],
+                    },
+                    colors: {
+                        bg: {
+                            main: '#09090b',    // Zinc 950
+                            card: '#18181b',    // Zinc 900
+                            hover: '#27272a',   // Zinc 800
+                        },
+                        border: {
+                            DEFAULT: '#27272a', // Zinc 800
+                            active: '#3f3f46',  // Zinc 700
+                        },
+                        accent: {
+                            primary: '#38bdf8', // Sky 400 (Data/Cloud vibes)
+                            secondary: '#818cf8', // Indigo 400 (Research vibes)
+                            highlight: '#22d3ee', // Cyan 400
+                            success: '#4ade80', // Green 400 (Achievements)
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        /* Clean Technical Scrollbar */
+        ::-webkit-scrollbar { width: 10px; }
+        ::-webkit-scrollbar-track { background: #09090b; }
+        ::-webkit-scrollbar-thumb { background: #27272a; border: 2px solid #09090b; border-radius: 99px; }
+        ::-webkit-scrollbar-thumb:hover { background: #3f3f46; }
+
+        /* Utilities */
+        .section-header::before {
+            content: '#';
+            color: #38bdf8;
+            margin-right: 0.5rem;
+            opacity: 0.6;
+        }
+        
+        .tech-tag {
+            background: rgba(56, 189, 248, 0.05);
+            border: 1px solid rgba(56, 189, 248, 0.1);
+            color: #38bdf8;
+            transition: all 0.2s;
+        }
+        .tech-tag:hover {
+            background: rgba(56, 189, 248, 0.1);
+            border-color: rgba(56, 189, 248, 0.3);
+        }
+
+        .research-card:hover {
+            border-color: #818cf8;
+        }
+        
+        .list-tech li::marker {
+            color: #38bdf8;
+        }
+    </style>
+</head>
+<body class="bg-bg-main text-slate-300 font-sans antialiased selection:bg-accent-primary selection:text-black">
+
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 top-0 start-0 border-b border-border bg-bg-main/90 backdrop-blur-sm">
+        <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
+            <a href="#" class="flex items-center space-x-2 group">
+                <div class="w-8 h-8 bg-white/5 border border-white/10 rounded flex items-center justify-center group-hover:border-accent-primary/50 transition-colors">
+                    <span class="font-mono font-bold text-accent-primary">K</span>
+                </div>
+                <span class="text-lg font-bold text-white font-mono tracking-tight group-hover:text-white transition-colors">Keshav Krishna</span>
+            </a>
+            
+            <!-- Mobile Menu Button -->
+            <button data-collapse-toggle="navbar-sticky" type="button" class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-slate-500 rounded-lg md:hidden hover:bg-bg-hover focus:outline-none" aria-controls="navbar-sticky" aria-expanded="false">
+                <span class="sr-only">Open main menu</span>
+                <i data-lucide="menu" class="w-5 h-5"></i>
+            </button>
+
+            <div class="hidden w-full md:block md:w-auto" id="navbar-sticky">
+                <ul class="flex flex-col p-4 md:p-0 mt-4 font-mono text-sm border border-border rounded-lg bg-bg-card md:space-x-8 rtl:space-x-reverse md:flex-row md:mt-0 md:border-0 md:bg-transparent">
+                    <li><a href="#about" class="block py-2 px-3 text-slate-400 hover:text-white transition-colors">.about()</a></li>
+                    <li><a href="#experience" class="block py-2 px-3 text-slate-400 hover:text-white transition-colors">.experience()</a></li>
+                    <li><a href="#research" class="block py-2 px-3 text-slate-400 hover:text-white transition-colors">.research()</a></li>
+                    <li><a href="#projects" class="block py-2 px-3 text-slate-400 hover:text-white transition-colors">.projects()</a></li>
+                    <li><a href="#achievements" class="block py-2 px-3 text-slate-400 hover:text-white transition-colors">.awards()</a></li>
+                    <li><a href="#education" class="block py-2 px-3 text-slate-400 hover:text-white transition-colors">.education()</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="min-h-screen flex items-center justify-center pt-16 relative">
+        <div class="py-8 px-4 mx-auto max-w-screen-xl text-center lg:py-16 relative z-10">
+            <!-- Status Badge -->
+            <div class="inline-flex items-center py-1 px-3 mb-8 text-sm text-accent-primary bg-accent-primary/5 border border-accent-primary/20 rounded-full font-mono">
+                <span class="flex w-2 h-2 bg-accent-primary rounded-full mr-2 animate-pulse"></span>
+                Seeking Summer 2025 Internships (SWE / Data Science)
+            </div>
+
+            <h1 class="mb-4 text-5xl font-extrabold tracking-tight leading-none text-white md:text-6xl lg:text-7xl font-mono">
+                Building <span class="text-transparent bg-clip-text bg-gradient-to-r from-accent-primary to-accent-secondary">Intelligent</span><br>
+                Software Systems.
+            </h1>
+            
+            <p class="mb-8 text-lg font-normal text-slate-400 lg:text-xl sm:px-16 xl:px-48 max-w-4xl mx-auto">
+                MSCS at <span class="text-white font-medium">NYU Courant</span>. Previously at <span class="text-white font-medium">JioSaavn</span> & <span class="text-white font-medium">IIT Ropar</span>. <br>
+                Specializing in Scalable Systems, Machine Learning, and Computer Vision.
+            </p>
+            
+            <div class="flex flex-col mb-8 lg:mb-16 space-y-4 sm:flex-row sm:justify-center sm:space-y-0 sm:space-x-4">
+                <a href="#experience" class="inline-flex justify-center items-center py-3 px-6 text-base font-medium text-center text-bg-main bg-white rounded hover:bg-slate-200 focus:ring-4 focus:ring-slate-400 transition-all font-mono">
+                    View Resume / CV
+                </a>
+                <a href="#research" class="inline-flex justify-center items-center py-3 px-6 text-base font-medium text-center text-slate-300 border border-border rounded hover:text-white hover:bg-bg-hover focus:ring-4 focus:ring-gray-700 transition-all font-mono">
+                    Research Work
+                </a>
+            </div>
+
+            <!-- Stats/Tech -->
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-3xl mx-auto border-t border-border pt-8 mt-8">
+                <div>
+                    <div class="text-2xl font-bold text-white font-mono">3+ Years</div>
+                    <div class="text-xs text-slate-500 uppercase tracking-widest mt-1">Experience</div>
+                </div>
+                <div>
+                    <div class="text-2xl font-bold text-white font-mono">8.74</div>
+                    <div class="text-xs text-slate-500 uppercase tracking-widest mt-1">GPA (IIT Ropar)</div>
+                </div>
+                <div>
+                    <div class="text-2xl font-bold text-white font-mono">ML/AI</div>
+                    <div class="text-xs text-slate-500 uppercase tracking-widest mt-1">Specialization</div>
+                </div>
+                <div>
+                    <div class="text-2xl font-bold text-white font-mono">Python/C++</div>
+                    <div class="text-xs text-slate-500 uppercase tracking-widest mt-1">Core Stack</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Work Experience Section -->
+    <section id="experience" class="py-20 border-t border-border bg-bg-main">
+        <div class="max-w-screen-xl mx-auto px-4">
+            <h2 class="text-3xl font-bold text-white mb-12 section-header font-mono">Work Experience</h2>
+            
+            <div class="space-y-12">
+                <!-- Job 1: JioSaavn -->
+                <div class="group relative pl-8 border-l border-border hover:border-accent-primary transition-colors">
+                    <div class="absolute -left-[5px] top-0 w-[9px] h-[9px] bg-bg-main border border-border rounded-full group-hover:border-accent-primary group-hover:bg-accent-primary transition-all"></div>
+                    
+                    <div class="flex flex-col md:flex-row md:items-start md:justify-between mb-4">
+                        <div>
+                            <h3 class="text-xl font-bold text-white">Software Engineer (Data Science)</h3>
+                            <div class="text-accent-primary font-mono text-sm mt-1">JioSaavn • Mumbai, India</div>
+                        </div>
+                        <div class="font-mono text-sm text-slate-500 mt-1 md:mt-0">July 2023 - July 2025</div>
+                    </div>
+                    
+                    <ul class="list-disc list-outside ml-4 space-y-3 text-slate-400 mb-6 text-sm list-tech">
+                        <li><strong>User Content Mixes:</strong> Built early-morning and late-night content mixes for 12M daily users using Hive, Spark, Redis, and PHP, driving 1M impressions and 500K streams per day.</li>
+                        <li><strong>Users’ Mixes Ranking:</strong> Implemented <strong>Multi-armed Bandits (Thompson sampling)</strong> and trained <strong>DNNs</strong> for ranking mixes. Conducted EDA and feature selection to optimize user engagement.</li>
+                        <li><strong>Topic Mixes (E2E):</strong> Generated mood-based topic mixes for 7.6M daily users via Spark and TF-IDF. Served to 100M app users with a 12.81% CTR.</li>
+                        <li><strong>Prompt to Playlist (GenAI):</strong> Built a RAG system using Llama3-7B for intent classification to dynamically retrieve songs and generate custom cover art via Stable Diffusion (SSD-1B).</li>
+                        <li><strong>Content Moderation:</strong> Switched from SetFit to prompt engineering with Llama3-8B-instruct for UGC playlists, achieving 85% accuracy on labeled data.</li>
+                        <li><strong>Cost Reduction:</strong> Migrated vector indexes to Qdrant and optimized lifecycle management, significantly reducing infrastructure costs.</li>
+                    </ul>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="text-xs font-mono px-2 py-1 rounded bg-bg-card border border-border text-slate-400">Spark/Hive</span>
+                        <span class="text-xs font-mono px-2 py-1 rounded bg-bg-card border border-border text-slate-400">Thompson Sampling</span>
+                        <span class="text-xs font-mono px-2 py-1 rounded bg-bg-card border border-border text-slate-400">Llama 3</span>
+                        <span class="text-xs font-mono px-2 py-1 rounded bg-bg-card border border-border text-slate-400">RecSys</span>
+                    </div>
+                </div>
+
+                <!-- Job 2: GE Healthcare -->
+                <div class="group relative pl-8 border-l border-border hover:border-accent-secondary transition-colors">
+                    <div class="absolute -left-[5px] top-0 w-[9px] h-[9px] bg-bg-main border border-border rounded-full group-hover:border-accent-secondary group-hover:bg-accent-secondary transition-all"></div>
+                    
+                    <div class="flex flex-col md:flex-row md:items-start md:justify-between mb-4">
+                        <div>
+                            <h3 class="text-xl font-bold text-white">Software Intern</h3>
+                            <div class="text-accent-secondary font-mono text-sm mt-1">GE Healthcare • Bangalore, India</div>
+                        </div>
+                        <div class="font-mono text-sm text-slate-500 mt-1 md:mt-0">May 2022 - July 2022</div>
+                    </div>
+                    
+                    <ul class="list-disc list-outside ml-4 space-y-3 text-slate-400 mb-6 text-sm list-tech">
+                        <li><strong>Face De-identification:</strong> Applied YOLO algorithms to identify and blur faces in medical data, achieving over 90% accuracy on 20,000+ images to comply with privacy standards.</li>
+                        <li><strong>Person Counting & Nudity Detection:</strong> Trained models using YOLO and NudeNet, reaching over 85% mAP for hospital environment monitoring.</li>
+                        <li><strong>Infrastructure:</strong> Created Docker images with globally accessible modules and exposed logic via FastAPI endpoints for cross-project utility.</li>
+                    </ul>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="text-xs font-mono px-2 py-1 rounded bg-bg-card border border-border text-slate-400">Computer Vision</span>
+                        <span class="text-xs font-mono px-2 py-1 rounded bg-bg-card border border-border text-slate-400">YOLO</span>
+                        <span class="text-xs font-mono px-2 py-1 rounded bg-bg-card border border-border text-slate-400">FastAPI</span>
+                        <span class="text-xs font-mono px-2 py-1 rounded bg-bg-card border border-border text-slate-400">Docker</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Research Section -->
+    <section id="research" class="py-20 border-t border-border bg-bg-card/30">
+        <div class="max-w-screen-xl mx-auto px-4">
+            <h2 class="text-3xl font-bold text-white mb-4 section-header font-mono">Research Projects</h2>
+            <p class="text-slate-400 mb-12 max-w-3xl">
+                Independent and supervised research in Systems, IoT, and Machine Learning.
+            </p>
+
+            <div class="grid md:grid-cols-2 gap-6">
+                <!-- Research 1: Cache ML Review -->
+                <div class="research-card bg-bg-card border border-border p-6 rounded hover:border-accent-secondary transition-all group flex flex-col">
+                    <div class="flex justify-between items-start mb-4">
+                        <i data-lucide="book-open" class="w-8 h-8 text-accent-secondary"></i>
+                        <span class="text-xs font-mono text-slate-500 border border-border px-2 py-1 rounded">Review Paper</span>
+                    </div>
+                    <h3 class="text-lg font-bold text-white mb-2 group-hover:text-accent-secondary transition-colors">ML Innovations in Cache Management</h3>
+                    <p class="text-sm text-slate-500 font-mono mb-2">Published in Frontiers in AI | 2025</p>
+                    <p class="text-sm text-slate-400 mb-4 flex-grow">
+                        Authored a comprehensive review: "Advancements in cache management: a review of machine learning innovations". Analyzed over 45 papers on RL and LSTM models for cache replacement and security threat mitigation.
+                    </p>
+                    <a href="https://www.frontiersin.org/journals/artificial-intelligence/articles/10.3389/frai.2025.1441250/abstract" target="_blank" class="text-xs text-accent-secondary font-mono hover:underline flex items-center">
+                        DOI: 10.3389/frai.2025.1441250 <i data-lucide="external-link" class="w-3 h-3 ml-1"></i>
+                    </a>
+                </div>
+
+                <!-- Research 2: LLC Write Balancing -->
+                <div class="research-card bg-bg-card border border-border p-6 rounded hover:border-accent-secondary transition-all group flex flex-col">
+                    <div class="flex justify-between items-start mb-4">
+                        <i data-lucide="cpu" class="w-8 h-8 text-accent-secondary"></i>
+                        <span class="text-xs font-mono text-slate-500 border border-border px-2 py-1 rounded">Systems Research</span>
+                    </div>
+                    <h3 class="text-lg font-bold text-white mb-2 group-hover:text-accent-secondary transition-colors">Last Level Cache Intra-set Write Balancing</h3>
+                    <p class="text-sm text-slate-500 font-mono mb-2">IIT Ropar | July 2022 - Mar 2023</p>
+                    <p class="text-sm text-slate-400 mb-4 flex-grow">
+                        Addressed write endurance in Non-Volatile Memory (NVM). Developed a sample-based blocking technique using ChampSim to balance cache traffic, significantly improving memory cell lifespan.
+                    </p>
+                </div>
+
+                <!-- Research 3: Heart Rate Smartphone -->
+                <div class="research-card bg-bg-card border border-border p-6 rounded hover:border-accent-secondary transition-all group flex flex-col">
+                    <div class="flex justify-between items-start mb-4">
+                        <i data-lucide="activity" class="w-8 h-8 text-accent-secondary"></i>
+                        <span class="text-xs font-mono text-slate-500 border border-border px-2 py-1 rounded">IoT & Health</span>
+                    </div>
+                    <h3 class="text-lg font-bold text-white mb-2 group-hover:text-accent-secondary transition-colors">Heart Rate Measurement using Smartphone</h3>
+                    <p class="text-sm text-slate-500 font-mono mb-2">IIT Ropar | Jan 2023 - May 2023</p>
+                    <p class="text-sm text-slate-400 mb-4 flex-grow">
+                        Developed a non-invasive system using Photoplethysmography (PPG) via smartphone camera. Signal processing algorithms achieved 89.7% accuracy across 50 subjects.
+                    </p>
+                </div>
+
+                <!-- Research 4: FPGA -->
+                <div class="research-card bg-bg-card border border-border p-6 rounded hover:border-accent-secondary transition-all group flex flex-col">
+                    <div class="flex justify-between items-start mb-4">
+                        <i data-lucide="microchip" class="w-8 h-8 text-accent-secondary"></i>
+                        <span class="text-xs font-mono text-slate-500 border border-border px-2 py-1 rounded">Hardware</span>
+                    </div>
+                    <h3 class="text-lg font-bold text-white mb-2 group-hover:text-accent-secondary transition-colors">Designing FPGA in Iverilog</h3>
+                    <p class="text-sm text-slate-500 font-mono mb-2">IIT Ropar | Oct 2020 - Nov 2020</p>
+                    <p class="text-sm text-slate-400 mb-4 flex-grow">
+                        Implemented re-configurable fabric logic (Shift Register, Adder, Multiplexer) using only switch boxes and logic tiles in Iverilog. Contributed to a pedagogical research paper.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Academic Projects Section -->
+    <section id="projects" class="py-20 border-t border-border bg-bg-main">
+        <div class="max-w-screen-xl mx-auto px-4">
+            <h2 class="text-3xl font-bold text-white mb-12 section-header font-mono">Academic Projects</h2>
+            
+            <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+                
+                <!-- Project 1: Online Judge -->
+                <div class="bg-bg-card border border-border p-6 rounded hover:border-slate-500 transition-colors flex flex-col h-full">
+                    <div class="flex justify-between items-center mb-4">
+                        <i data-lucide="code-2" class="w-6 h-6 text-slate-400"></i>
+                        <div class="flex space-x-3">
+                            <a href="https://github.com/k-keshav-k" target="_blank" class="text-slate-500 hover:text-white"><i data-lucide="github" class="w-5 h-5"></i></a>
+                        </div>
+                    </div>
+                    <h3 class="text-lg font-bold text-white mb-2">Online Judge Platform</h3>
+                    <p class="text-sm text-slate-400 mb-4 flex-grow">
+                        Built a secure code execution platform using Python and Django. Integrated Docker to sandbox submissions and securely judge correctness. Scaled to handle 100+ algorithmic problems.
+                    </p>
+                    <div class="flex flex-wrap gap-2 mt-auto">
+                        <span class="text-xs text-accent-primary font-mono">Django</span>
+                        <span class="text-xs text-accent-primary font-mono">Docker</span>
+                        <span class="text-xs text-accent-primary font-mono">Python</span>
+                    </div>
+                </div>
+
+                <!-- Project 2: RISC-V Simulator -->
+                <div class="bg-bg-card border border-border p-6 rounded hover:border-slate-500 transition-colors flex flex-col h-full">
+                    <div class="flex justify-between items-center mb-4">
+                        <i data-lucide="cpu" class="w-6 h-6 text-slate-400"></i>
+                        <div class="flex space-x-3">
+                            <a href="https://github.com/k-keshav-k" target="_blank" class="text-slate-500 hover:text-white"><i data-lucide="github" class="w-5 h-5"></i></a>
+                        </div>
+                    </div>
+                    <h3 class="text-lg font-bold text-white mb-2">RISC-V ISA Simulator</h3>
+                    <p class="text-sm text-slate-400 mb-4 flex-grow">
+                        Developed a complete instruction set simulator for RISC-V (RV32I). Implemented step-by-step execution, register inspection, and memory debugging.
+                    </p>
+                    <div class="flex flex-wrap gap-2 mt-auto">
+                        <span class="text-xs text-accent-primary font-mono">C++</span>
+                        <span class="text-xs text-accent-primary font-mono">Computer Architecture</span>
+                    </div>
+                </div>
+
+                <!-- Project 3: Database Portal -->
+                <div class="bg-bg-card border border-border p-6 rounded hover:border-slate-500 transition-colors flex flex-col h-full">
+                    <div class="flex justify-between items-center mb-4">
+                        <i data-lucide="database" class="w-6 h-6 text-slate-400"></i>
+                        <div class="flex space-x-3">
+                            <a href="https://github.com/k-keshav-k" target="_blank" class="text-slate-500 hover:text-white"><i data-lucide="github" class="w-5 h-5"></i></a>
+                        </div>
+                    </div>
+                    <h3 class="text-lg font-bold text-white mb-2">Academic Portal Database</h3>
+                    <p class="text-sm text-slate-400 mb-4 flex-grow">
+                        Designed a robust PostgreSQL database for university management (course registration, grades, enrollments). Utilized stored procedures and triggers to enforce logic.
+                    </p>
+                    <div class="flex flex-wrap gap-2 mt-auto">
+                        <span class="text-xs text-accent-primary font-mono">PostgreSQL</span>
+                        <span class="text-xs text-accent-primary font-mono">SQL</span>
+                    </div>
+                </div>
+
+                <!-- Project 4: Patient Audit App -->
+                <div class="bg-bg-card border border-border p-6 rounded hover:border-slate-500 transition-colors flex flex-col h-full">
+                    <div class="flex justify-between items-center mb-4">
+                        <i data-lucide="smartphone" class="w-6 h-6 text-slate-400"></i>
+                        <div class="flex space-x-3">
+                            <a href="#" class="text-slate-500 hover:text-white"><i data-lucide="external-link" class="w-5 h-5"></i></a>
+                        </div>
+                    </div>
+                    <h3 class="text-lg font-bold text-white mb-2">Patient Audit App</h3>
+                    <p class="text-sm text-slate-400 mb-4 flex-grow">
+                        Created a Flutter app for medical residents to automate record keeping. Implemented secure OTP auth and deployed a NodeJS/PostgreSQL backend on Heroku.
+                    </p>
+                    <div class="flex flex-wrap gap-2 mt-auto">
+                        <span class="text-xs text-accent-primary font-mono">Flutter</span>
+                        <span class="text-xs text-accent-primary font-mono">NodeJS</span>
+                        <span class="text-xs text-accent-primary font-mono">Full Stack</span>
+                    </div>
+                </div>
+
+                <!-- Project 5: Face Detection API -->
+                <div class="bg-bg-card border border-border p-6 rounded hover:border-slate-500 transition-colors flex flex-col h-full">
+                    <div class="flex justify-between items-center mb-4">
+                        <i data-lucide="scan-face" class="w-6 h-6 text-slate-400"></i>
+                        <div class="flex space-x-3">
+                            <a href="https://github.com/k-keshav-k" target="_blank" class="text-slate-500 hover:text-white"><i data-lucide="github" class="w-5 h-5"></i></a>
+                        </div>
+                    </div>
+                    <h3 class="text-lg font-bold text-white mb-2">API for Face Detection</h3>
+                    <p class="text-sm text-slate-400 mb-4 flex-grow">
+                        Developed FastAPI routes to detect and retrieve names from images. Handled batch processing, metadata tagging, and efficient database storage for image retrieval.
+                    </p>
+                    <div class="flex flex-wrap gap-2 mt-auto">
+                        <span class="text-xs text-accent-primary font-mono">FastAPI</span>
+                        <span class="text-xs text-accent-primary font-mono">Computer Vision</span>
+                    </div>
+                </div>
+
+                <!-- Project 6: Book Info Extraction -->
+                <div class="bg-bg-card border border-border p-6 rounded hover:border-slate-500 transition-colors flex flex-col h-full">
+                    <div class="flex justify-between items-center mb-4">
+                        <i data-lucide="book" class="w-6 h-6 text-slate-400"></i>
+                        <div class="flex space-x-3">
+                            <a href="https://github.com/k-keshav-k" target="_blank" class="text-slate-500 hover:text-white"><i data-lucide="github" class="w-5 h-5"></i></a>
+                        </div>
+                    </div>
+                    <h3 class="text-lg font-bold text-white mb-2">Book Info Extraction</h3>
+                    <p class="text-sm text-slate-400 mb-4 flex-grow">
+                        Automated the extraction of book metadata (name, author, ISBN) from cover images using Pytesseract OCR. Achieved 88.2% accuracy on real-world datasets.
+                    </p>
+                    <div class="flex flex-wrap gap-2 mt-auto">
+                        <span class="text-xs text-accent-primary font-mono">OCR</span>
+                        <span class="text-xs text-accent-primary font-mono">Python</span>
+                    </div>
+                </div>
+
+                <!-- Project 7: Java CRUD Library -->
+                <div class="bg-bg-card border border-border p-6 rounded hover:border-slate-500 transition-colors flex flex-col h-full">
+                    <div class="flex justify-between items-center mb-4">
+                        <i data-lucide="library" class="w-6 h-6 text-slate-400"></i>
+                        <div class="flex space-x-3">
+                            <a href="https://github.com/k-keshav-k" target="_blank" class="text-slate-500 hover:text-white"><i data-lucide="github" class="w-5 h-5"></i></a>
+                        </div>
+                    </div>
+                    <h3 class="text-lg font-bold text-white mb-2">Java CRUD Library</h3>
+                    <p class="text-sm text-slate-400 mb-4 flex-grow">
+                        Built a custom ORM-like library for RDBMS. Parses XML configs to auto-generate SQL queries and populate POJOs using Java Reflection, simplifying database interactions.
+                    </p>
+                    <div class="flex flex-wrap gap-2 mt-auto">
+                        <span class="text-xs text-accent-primary font-mono">Java</span>
+                        <span class="text-xs text-accent-primary font-mono">MySQL</span>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Achievements Section -->
+    <section id="achievements" class="py-20 border-t border-border bg-bg-card/20">
+        <div class="max-w-screen-xl mx-auto px-4">
+            <h2 class="text-3xl font-bold text-white mb-12 section-header font-mono">Achievements & Awards</h2>
+            
+            <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+                
+                <!-- Achievement 1: IIT Ropar Scholarship -->
+                <div class="bg-bg-card border border-border p-6 rounded hover:border-accent-success transition-all group flex flex-col">
+                    <div class="flex items-center mb-4">
+                        <div class="p-2 bg-accent-success/10 rounded-lg text-accent-success mr-4 group-hover:bg-accent-success/20 transition-colors">
+                            <i data-lucide="award" class="w-6 h-6"></i>
+                        </div>
+                        <h3 class="text-lg font-bold text-white group-hover:text-accent-success transition-colors">Merit Scholarship</h3>
+                    </div>
+                    <p class="text-sm text-slate-400 flex-grow">
+                        Awarded the prestigious IIT Ropar Merit Scholarship for exceptional academic performance throughout the undergraduate program.
+                    </p>
+                    <div class="mt-4 pt-4 border-t border-white/5 flex justify-between items-center text-xs font-mono text-slate-500">
+                        <span>IIT Ropar</span>
+                        <span class="text-accent-success">Academic</span>
+                    </div>
+                </div>
+
+                <!-- Achievement 2: Gold Medal Math Olympiad -->
+                <div class="bg-bg-card border border-border p-6 rounded hover:border-accent-success transition-all group flex flex-col">
+                    <div class="flex items-center mb-4">
+                        <div class="p-2 bg-accent-success/10 rounded-lg text-accent-success mr-4 group-hover:bg-accent-success/20 transition-colors">
+                            <i data-lucide="medal" class="w-6 h-6"></i>
+                        </div>
+                        <h3 class="text-lg font-bold text-white group-hover:text-accent-success transition-colors">Gold Medal @ RMO</h3>
+                    </div>
+                    <p class="text-sm text-slate-400 flex-grow">
+                        Secured Gold Medal for achieving the highest points in the Regional Mathematics Olympiad conducted by HBCSE.
+                    </p>
+                    <div class="mt-4 pt-4 border-t border-white/5 flex justify-between items-center text-xs font-mono text-slate-500">
+                        <span>HBCSE</span>
+                        <span class="text-accent-success">Mathematics</span>
+                    </div>
+                </div>
+
+                <!-- Achievement 3: Jumpstart Finalist -->
+                <div class="bg-bg-card border border-border p-6 rounded hover:border-accent-success transition-all group flex flex-col">
+                    <div class="flex items-center mb-4">
+                        <div class="p-2 bg-accent-success/10 rounded-lg text-accent-success mr-4 group-hover:bg-accent-success/20 transition-colors">
+                            <i data-lucide="trophy" class="w-6 h-6"></i>
+                        </div>
+                        <h3 class="text-lg font-bold text-white group-hover:text-accent-success transition-colors">Jumpstart'22 Finalist</h3>
+                    </div>
+                    <p class="text-sm text-slate-400 flex-grow">
+                        Selected as a finalist in the Jumpstart Hackathon by Publicis Sapient, clearing all rounds among 29,864 registrations.
+                    </p>
+                    <div class="mt-4 pt-4 border-t border-white/5 flex justify-between items-center text-xs font-mono text-slate-500">
+                        <span>Publicis Sapient</span>
+                        <span class="text-accent-success">Hackathon</span>
+                    </div>
+                </div>
+
+                <!-- Achievement 4: Competitive Coding -->
+                <div class="bg-bg-card border border-border p-6 rounded hover:border-accent-success transition-all group flex flex-col">
+                    <div class="flex items-center mb-4">
+                        <div class="p-2 bg-accent-success/10 rounded-lg text-accent-success mr-4 group-hover:bg-accent-success/20 transition-colors">
+                            <i data-lucide="code" class="w-6 h-6"></i>
+                        </div>
+                        <h3 class="text-lg font-bold text-white group-hover:text-accent-success transition-colors">Competitive Coding</h3>
+                    </div>
+                    <div class="space-y-2 text-sm text-slate-400 flex-grow">
+                        <div class="flex justify-between">
+                            <span>CodeChef:</span>
+                            <span class="text-white font-mono">5 Star (2021)</span>
+                        </div>
+                        <div class="flex justify-between">
+                            <span>Codeforces:</span>
+                            <span class="text-white font-mono">Specialist (2022)</span>
+                        </div>
+                    </div>
+                    <div class="mt-4 pt-4 border-t border-white/5 flex justify-between items-center text-xs font-mono text-slate-500">
+                        <span>Global</span>
+                        <span class="text-accent-success">Algorithms</span>
+                    </div>
+                </div>
+
+                <!-- Achievement 5: CBSE Topper -->
+                <div class="bg-bg-card border border-border p-6 rounded hover:border-accent-success transition-all group flex flex-col">
+                    <div class="flex items-center mb-4">
+                        <div class="p-2 bg-accent-success/10 rounded-lg text-accent-success mr-4 group-hover:bg-accent-success/20 transition-colors">
+                            <i data-lucide="star" class="w-6 h-6"></i>
+                        </div>
+                        <h3 class="text-lg font-bold text-white group-hover:text-accent-success transition-colors">City Top 3 (CBSE 12)</h3>
+                    </div>
+                    <p class="text-sm text-slate-400 flex-grow">
+                        Science Topper of school and ranked among the Top 3 students in Patna city for CBSE Class 12 board exams.
+                    </p>
+                    <div class="mt-4 pt-4 border-t border-white/5 flex justify-between items-center text-xs font-mono text-slate-500">
+                        <span>CBSE</span>
+                        <span class="text-accent-success">Academics</span>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Education Section -->
+    <section id="education" class="py-20 border-t border-border bg-bg-card/20">
+        <div class="max-w-screen-xl mx-auto px-4">
+            <h2 class="text-3xl font-bold text-white mb-12 section-header font-mono">Education</h2>
+            
+            <div class="space-y-6">
+                <!-- University 1 -->
+                <div class="flex flex-col md:flex-row justify-between items-start bg-bg-card border border-border p-6 rounded-lg">
+                    <div>
+                        <h3 class="text-xl font-bold text-white">New York University (Courant Institute)</h3>
+                        <p class="text-slate-400">Master of Science in Computer Science</p>
+                        <div class="mt-4 flex flex-wrap gap-2">
+                            <span class="px-2 py-1 bg-white/5 rounded text-xs text-slate-300 font-mono">Algorithms</span>
+                            <span class="px-2 py-1 bg-white/5 rounded text-xs text-slate-300 font-mono">Machine Learning</span>
+                            <span class="px-2 py-1 bg-white/5 rounded text-xs text-slate-300 font-mono">Big Data</span>
+                        </div>
+                    </div>
+                    <div class="mt-4 md:mt-0 text-right">
+                        <div class="text-accent-primary font-mono font-bold">New York, USA</div>
+                        <div class="text-slate-500 text-sm mt-1">Present</div>
+                    </div>
+                </div>
+
+                <!-- University 2 -->
+                <div class="flex flex-col md:flex-row justify-between items-start bg-bg-card border border-border p-6 rounded-lg">
+                    <div>
+                        <h3 class="text-xl font-bold text-white">Indian Institute of Technology (IIT), Ropar</h3>
+                        <p class="text-slate-400">Bachelor of Technology in Computer Science & Engineering</p>
+                        <p class="text-slate-500 text-sm mt-2">GPA: 8.74 / 10.0</p>
+                    </div>
+                    <div class="mt-4 md:mt-0 md:text-right">
+                        <div class="text-accent-primary font-mono font-bold">Punjab, India</div>
+                        <div class="text-slate-500 text-sm mt-1">2019 - 2023</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-bg-main border-t border-border py-12 text-center md:text-left">
+        <div class="mx-auto max-w-screen-xl px-4 flex flex-col md:flex-row justify-between items-center">
+            <div class="mb-4 md:mb-0">
+                <span class="font-mono text-slate-500 text-sm">Designed & Built by Keshav Krishna</span>
+            </div>
+            
+            <div class="flex space-x-6">
+                <a href="mailto:kk6081@nyu.edu" class="text-slate-500 hover:text-accent-primary transition-colors">
+                    <i data-lucide="mail" class="w-5 h-5"></i>
+                </a>
+                <a href="https://www.linkedin.com/in/keshav-krishna-5054681a9/" target="_blank" class="text-slate-500 hover:text-accent-primary transition-colors">
+                    <i data-lucide="linkedin" class="w-5 h-5"></i>
+                </a>
+                <a href="https://github.com/k-keshav-k" target="_blank" class="text-slate-500 hover:text-accent-primary transition-colors">
+                    <i data-lucide="github" class="w-5 h-5"></i>
+                </a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Initialize Icons -->
+    <script>
+        lucide.createIcons();
+    </script>
+</body>
+</html>
