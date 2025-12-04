@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Keshav Krishna | MSCS @ NYU Courant</title>
-    <meta name="description" content="Portfolio of Keshav Krishna - Software Engineer, Data Scientist, and Researcher. MS CS at NYU Courant.">
+    <title>Keshav Krishna | Software Engineer & Researcher</title>
+    <meta name="description" content="Portfolio of Keshav Krishna - Software Engineer and Researcher. MS in Computer Science at NYU Courant. Specializing in Machine Learning, Scalable Systems, and Computer Vision.">
     
     <!-- Fonts: Inter for copy, JetBrains Mono for headers/code -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -56,11 +56,19 @@
         ::-webkit-scrollbar-thumb:hover { background: #3f3f46; }
 
         /* Utilities */
-        .section-header::before {
-            content: '#';
-            color: #38bdf8;
-            margin-right: 0.5rem;
-            opacity: 0.6;
+        .section-header {
+            position: relative;
+            display: inline-block;
+        }
+        .section-header::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 0;
+            width: 60px;
+            height: 3px;
+            background: linear-gradient(to right, #38bdf8, #818cf8);
+            border-radius: 2px;
         }
         
         .tech-tag {
@@ -103,12 +111,11 @@
 
             <div class="hidden w-full md:block md:w-auto" id="navbar-sticky">
                 <ul class="flex flex-col p-4 md:p-0 mt-4 font-mono text-sm border border-border rounded-lg bg-bg-card md:space-x-8 rtl:space-x-reverse md:flex-row md:mt-0 md:border-0 md:bg-transparent">
-                    <li><a href="#about" class="block py-2 px-3 text-slate-400 hover:text-white transition-colors">.about()</a></li>
-                    <li><a href="#experience" class="block py-2 px-3 text-slate-400 hover:text-white transition-colors">.experience()</a></li>
-                    <li><a href="#research" class="block py-2 px-3 text-slate-400 hover:text-white transition-colors">.research()</a></li>
-                    <li><a href="#projects" class="block py-2 px-3 text-slate-400 hover:text-white transition-colors">.projects()</a></li>
-                    <li><a href="#achievements" class="block py-2 px-3 text-slate-400 hover:text-white transition-colors">.awards()</a></li>
-                    <li><a href="#education" class="block py-2 px-3 text-slate-400 hover:text-white transition-colors">.education()</a></li>
+                    <li><a href="#experience" class="block py-2 px-3 text-slate-400 hover:text-white transition-colors">Experience</a></li>
+                    <li><a href="#research" class="block py-2 px-3 text-slate-400 hover:text-white transition-colors">Research</a></li>
+                    <li><a href="#projects" class="block py-2 px-3 text-slate-400 hover:text-white transition-colors">Projects</a></li>
+                    <li><a href="#achievements" class="block py-2 px-3 text-slate-400 hover:text-white transition-colors">Awards</a></li>
+                    <li><a href="#education" class="block py-2 px-3 text-slate-400 hover:text-white transition-colors">Education</a></li>
                 </ul>
             </div>
         </div>
@@ -116,34 +123,47 @@
 
     <!-- Hero Section -->
     <section class="min-h-screen flex items-center justify-center pt-16 relative">
-        <div class="py-8 px-4 mx-auto max-w-screen-xl text-center lg:py-16 relative z-10">
-            <!-- Status Badge -->
-            <div class="inline-flex items-center py-1 px-3 mb-8 text-sm text-accent-primary bg-accent-primary/5 border border-accent-primary/20 rounded-full font-mono">
-                <span class="flex w-2 h-2 bg-accent-primary rounded-full mr-2 animate-pulse"></span>
-                Seeking Summer 2025 Internships (SWE / Data Science)
-            </div>
+        <div class="py-8 px-4 mx-auto max-w-screen-xl lg:py-16 relative z-10">
+            <div class="flex flex-col lg:flex-row items-center justify-center gap-12">
+                <!-- Photo -->
+                <div class="flex-shrink-0">
+                    <div class="w-48 h-48 md:w-56 md:h-56 rounded-full overflow-hidden border-2 border-accent-primary/30 shadow-lg shadow-accent-primary/10">
+                        <img src="photo.jpeg" alt="Keshav Krishna" class="w-full h-full object-cover">
+                    </div>
+                </div>
+                
+                <!-- Content -->
+                <div class="text-center lg:text-left">
+                    <!-- Status Badge -->
+                    <div class="inline-flex items-center py-1 px-3 mb-6 text-sm text-accent-primary bg-accent-primary/5 border border-accent-primary/20 rounded-full font-mono">
+                        <span class="flex w-2 h-2 bg-accent-primary rounded-full mr-2 animate-pulse"></span>
+                        Open to Summer 2025 Opportunities (SWE / Data Science)
+                    </div>
 
-            <h1 class="mb-4 text-5xl font-extrabold tracking-tight leading-none text-white md:text-6xl lg:text-7xl font-mono">
-                Building <span class="text-transparent bg-clip-text bg-gradient-to-r from-accent-primary to-accent-secondary">Intelligent</span><br>
-                Software Systems.
-            </h1>
-            
-            <p class="mb-8 text-lg font-normal text-slate-400 lg:text-xl sm:px-16 xl:px-48 max-w-4xl mx-auto">
-                MSCS at <span class="text-white font-medium">NYU Courant</span>. Previously at <span class="text-white font-medium">JioSaavn</span> & <span class="text-white font-medium">IIT Ropar</span>. <br>
-                Specializing in Scalable Systems, Machine Learning, and Computer Vision.
-            </p>
-            
-            <div class="flex flex-col mb-8 lg:mb-16 space-y-4 sm:flex-row sm:justify-center sm:space-y-0 sm:space-x-4">
-                <a href="#experience" class="inline-flex justify-center items-center py-3 px-6 text-base font-medium text-center text-bg-main bg-white rounded hover:bg-slate-200 focus:ring-4 focus:ring-slate-400 transition-all font-mono">
-                    View Resume / CV
-                </a>
-                <a href="#research" class="inline-flex justify-center items-center py-3 px-6 text-base font-medium text-center text-slate-300 border border-border rounded hover:text-white hover:bg-bg-hover focus:ring-4 focus:ring-gray-700 transition-all font-mono">
-                    Research Work
-                </a>
+                    <h1 class="mb-4 text-4xl font-extrabold tracking-tight leading-none text-white md:text-5xl lg:text-6xl font-mono">
+                        Keshav Krishna
+                    </h1>
+                    <p class="text-xl text-accent-secondary font-mono mb-4">Software Engineer & Researcher</p>
+                    
+                    <p class="mb-8 text-lg font-normal text-slate-400 max-w-2xl">
+                        MS in Computer Science at <span class="text-white font-medium">NYU Courant</span>. <br>
+                        Previously Software Engineer at <span class="text-white font-medium">JioSaavn</span> and Research Intern at <span class="text-white font-medium">IIT Ropar</span>. <br>
+                        Specializing in Scalable Systems, Machine Learning, and Computer Vision.
+                    </p>
+                    
+                    <div class="flex flex-col space-y-4 sm:flex-row sm:justify-center lg:justify-start sm:space-y-0 sm:space-x-4">
+                        <a href="#experience" class="inline-flex justify-center items-center py-3 px-6 text-base font-medium text-center text-bg-main bg-white rounded hover:bg-slate-200 focus:ring-4 focus:ring-slate-400 transition-all font-mono">
+                            View Experience
+                        </a>
+                        <a href="#research" class="inline-flex justify-center items-center py-3 px-6 text-base font-medium text-center text-slate-300 border border-border rounded hover:text-white hover:bg-bg-hover focus:ring-4 focus:ring-gray-700 transition-all font-mono">
+                            Research Publications
+                        </a>
+                    </div>
+                </div>
             </div>
 
             <!-- Stats/Tech -->
-            <div class="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-3xl mx-auto border-t border-border pt-8 mt-8">
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-3xl mx-auto border-t border-border pt-8 mt-12">
                 <div>
                     <div class="text-2xl font-bold text-white font-mono">3+ Years</div>
                     <div class="text-xs text-slate-500 uppercase tracking-widest mt-1">Experience</div>
