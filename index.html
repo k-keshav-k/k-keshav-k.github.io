@@ -621,6 +621,18 @@
     <!-- Initialize Icons -->
     <script>
         lucide.createIcons();
+        
+        // Mobile menu toggle
+        const menuButton = document.querySelector('[data-collapse-toggle="navbar-sticky"]');
+        const menu = document.getElementById('navbar-sticky');
+
+        if (menuButton && menu) {
+            menuButton.addEventListener('click', () => {
+                menu.classList.toggle('hidden');
+                const isExpanded = menu.classList.contains('hidden') ? 'false' : 'true';
+                menuButton.setAttribute('aria-expanded', isExpanded);
+            });
+        }
     </script>
 </body>
 </html>
