@@ -1,0 +1,141 @@
+\documentclass[10pt,letterpaper]{article}
+
+\usepackage[letterpaper,top=0.45in,bottom=0.45in,left=0.48in,right=0.48in]{geometry}
+\usepackage[T1]{fontenc}
+\usepackage{newpxtext,newpxmath}
+\usepackage{microtype}
+\usepackage{enumitem}
+\usepackage{titlesec}
+\usepackage{xcolor}
+\usepackage[hidelinks]{hyperref}
+\usepackage{tabularx}
+
+\pagestyle{empty}
+\setlength{\parindent}{0pt}
+\setlength{\tabcolsep}{0pt}
+\setlength{\emergencystretch}{2em}
+\urlstyle{same}
+
+\titleformat{\section}
+  {\large\scshape}
+  {}{0pt}{}
+  [\vspace{0.12em}\titlerule]
+\titlespacing*{\section}{0pt}{1.2em}{0.65em}
+
+\setlist[itemize]{
+  label=--,
+  leftmargin=1.8em,
+  itemsep=0.3em,
+  topsep=0.3em,
+  parsep=0pt,
+  partopsep=0pt
+}
+
+\newcommand{\entry}[4]{%
+  \begin{tabularx}{\textwidth}{@{}Xr@{}}
+    \textbf{#1} & #2 \\
+    \textit{#3} & \textit{#4}
+  \end{tabularx}\vspace{-0.2em}
+}
+
+\newcommand{\project}[2]{%
+  \begin{tabularx}{\textwidth}{@{}Xr@{}}
+    \textbf{#1} & \textit{#2}
+  \end{tabularx}\vspace{-0.25em}
+}
+
+\begin{document}
+\fontsize{10.4}{13.2}\selectfont
+
+\begin{center}
+  {\fontsize{24}{27}\selectfont\scshape Keshav Krishna}\\[0.15em]
+  New York City, US $\mid$ +1 (479) 685 5463 $\mid$ \href{mailto:kk6081@nyu.edu}{kk6081@nyu.edu}\\[-0.05em]
+  \href{https://github.com/k-keshav-k}{GitHub} $\mid$
+  \href{https://k-keshav-k.github.io/}{Website} $\mid$
+  \href{https://www.linkedin.com/in/keshav-krishna-5054681a9/}{LinkedIn} $\mid$
+  \href{https://scholar.google.com/citations?user=zN7P_v4AAAAJ}{Google Scholar}
+\end{center}
+
+\vspace{0.35em}
+Product engineer with three years shipping ML and NLP systems to production, including consumer systems serving 100M+ users. Currently building risk analytics tooling at Moore Capital Management after extending a full-time summer internship into a part-time fall role. I own features from an ambiguous conversation through production and measure model quality with explicit evaluations.
+
+\section{Education}
+
+\entry{New York University, Courant Institute --- MS, Computer Science}{Aug 2025 -- May 2027}{GPA 3.95/4.0; Machine Learning, Building LLM Reasoners, Honors Algorithms}{New York City}
+
+\vspace{0.45em}
+\entry{Indian Institute of Technology, Ropar --- BTech, Computer Science and Engineering}{Aug 2019 -- Jun 2023}{GPA 8.74/10; Merit Scholarship for top academic performance}{Ropar, India}
+
+\vspace{0.65em}
+\section{Experience}
+
+\entry{Moore Capital Management --- Risk Technology Intern}{May 2026 -- Present}{Risk analytics tooling and dashboards for internal users; full-time summer, part-time fall}{New York City}
+\begin{itemize}
+  \item Building internal risk dashboards and reporting tools used by risk and operations stakeholders; own features end to end, from a verbal request to something in production days later.
+  \item Python data workflows feeding those surfaces, with the interface layer in HTML/CSS; iterating directly on feedback from the people who use the tools daily rather than through a spec handoff.
+\end{itemize}
+
+\vspace{0.65em}
+\entry{JioSaavn --- Software Engineer, Data Science}{Jul 2023 -- Jul 2025}{Production ML and NLP in a consumer app serving 100M+ users}{Mumbai, India}
+\begin{itemize}
+  \item Built recommendation and personalization systems on embeddings and vector retrieval (Spark, Hive, Redis, Qdrant), driving \textbf{1M impressions, 800K clicks, and 500K streams per day} in production.
+  \item Shipped a LLaMA3-8B-Instruct conversational playlist system doing intent understanding and retrieval-driven song selection---an LLM feature in front of real users, deployed on Docker and Kubernetes, with the latency, cost, and failure-mode work that implies.
+  \item Ran a model bake-off across SetFit, HingRoBERTa, mURIL, and LLaMA3-8B-Instruct for multilingual playlist moderation, reaching 85\% accuracy against a manually labeled evaluation set.
+  \item Worked across product, editorial, and infrastructure teams in a small data-science group where the same person wrote the model, the pipeline, and the deployment.
+\end{itemize}
+
+\vspace{0.65em}
+\entry{GE Healthcare --- Software Intern, Medical Computer Vision}{May 2022 -- Jul 2022}{Detection and de-identification pipelines for clinical imaging}{Bangalore, India}
+\begin{itemize}
+  \item Built YOLO-based medical-image de-identification and RGB/IR people-detection pipelines over 20K+ images.
+\end{itemize}
+
+\section{Selected Technical Projects}
+
+\project{\href{https://github.com/k-keshav-k/Flash-Attention}{FlashAttention-2 --- from-scratch Triton implementation}}{2026}
+\begin{itemize}
+  \item Forward and backward kernels with online softmax, tiling, causal masking, and activation recomputation; cut attention memory from $O(N^2)$ to $O(N)$, enabling 65K-token sequences.
+  \item Profiled Transformer models up to 2.7B parameters with NVIDIA Nsight Systems and PyTorch memory snapshots, benchmarked against vanilla PyTorch and \texttt{torch.compile} baselines.
+\end{itemize}
+
+\vspace{0.6em}
+\project{\href{https://github.com/k-keshav-k/Large-Language-Models-from-Scratch}{Transformer language model from scratch}}{2026}
+\begin{itemize}
+  \item 17M-parameter model in PyTorch built from low-level components (BPE tokenization, RoPE, RMSNorm, SwiGLU, causal attention, AdamW, cosine LR scheduling), with systematic ablations across pre- vs. post-norm, RoPE vs. NoPE, and SwiGLU vs. SiLU.
+\end{itemize}
+
+\newpage
+\section{Research and Publications}
+
+\project{\href{https://github.com/k-keshav-k/Phase-Assisted-Generation}{Phase-Adaptive Generation: Efficient Decoding for Diffusion Language Models}}{Feb 2026 -- May 2026}
+\begin{itemize}
+  \item NYU project under Prof. Greg Durrett. Analyzed generation dynamics of Dream/LLaDA-style diffusion LMs via per-token refinement traces, revealing interpretable phase structure: template spans stabilize immediately while arithmetic and answer-finalization spans demand substantially more refinement.
+  \item Trained Transformer predictors over 138K block-level control tuples to forecast per-block refinement budgets; integrated into the LLaDA decoding loop, matching AdaBlock's 89.5\% GSM8K accuracy with approximately 21\% fewer forward evaluations. \href{https://github.com/k-keshav-k/Phase-Assisted-Generation/blob/main/writeup/final_report.pdf}{[Report]}
+\end{itemize}
+
+\vspace{0.75em}
+\project{\href{https://github.com/k-keshav-k/Alignment-and-Reasoning-RL}{Alignment and Reasoning RL for Mathematical LLMs}}{Spring 2026}
+\begin{itemize}
+  \item End-to-end post-training pipeline: zero-shot evaluation, SFT, GRPO with verified rewards, masked losses, entropy tracking, and policy-gradient updates. Fine-tuned Qwen2.5-Math-1.5B on chain-of-thought data, improving MATH accuracy from 56.4\% to 60.4\%.
+\end{itemize}
+
+\vspace{0.75em}
+\project{\href{https://github.com/k-keshav-k/ML-based-hardware-optimization-using-Phases}{ML-Driven Program Phase Prediction for Dynamic Hardware Resource Optimization}}{Jan 2026 -- May 2026}
+\begin{itemize}
+  \item Independent study with Prof. Mohamed Zahran, NYU Courant. Unsupervised clustering over temporal traces of multicore workloads defines interpretable pressure states, distilled into compact predictors with sub-KB model state.
+\end{itemize}
+
+\vspace{0.75em}
+\project{Publications}{2024 -- 2025}
+\begin{itemize}
+  \item \href{https://www.frontiersin.org/journals/artificial-intelligence/articles/10.3389/frai.2025.1441250/full}{\textit{Advancements in Cache Management: A Review of Machine Learning Innovations}} --- Frontiers in AI, 2025. Single-author, 10+ citations; reviewed 40+ papers on ML for cache management.
+  \item \href{https://arxiv.org/abs/2410.15344}{\textit{LLC Intra-set Write Balancing for Non-Volatile Memory Caches}} --- arXiv, 2024. Bachelor's thesis research.
+\end{itemize}
+
+\section{Technical Skills}
+
+\textbf{Product / full-stack:} React, JavaScript, HTML/CSS, FastAPI, Postgres, Redis, Docker, Kubernetes, Git, Linux\\
+\textbf{LLMs in production:} Anthropic and OpenAI APIs, agents and tool use (MCP), evals and benchmarking, context management, RAG and vector search (Qdrant), SFT/GRPO/RLHF, PyTorch, Hugging Face, tokenizers, vLLM\\
+\textbf{Data / infrastructure:} Python, C/C++, Spark, Hive, Airflow, Triton kernel development, NVIDIA Nsight Systems, Slurm/HPC, reproducible pipelines
+
+\end{document}
