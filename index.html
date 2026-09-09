@@ -5,6 +5,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Keshav Krishna</title>
     <meta name="description" content="Keshav Krishna — MS Computer Science at NYU Courant and part-time Risk Technology Intern at Moore Capital Management. Work in ML systems, efficient inference, and hardware-aware optimization.">
+
+    <script>
+        (() => {
+            try {
+                const savedTheme = localStorage.getItem('theme');
+                const preferredTheme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+                document.documentElement.dataset.theme = savedTheme === 'dark' || savedTheme === 'light' ? savedTheme : preferredTheme;
+            } catch (_) {
+                document.documentElement.dataset.theme = 'light';
+            }
+        })();
+    </script>
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -14,8 +26,10 @@
         *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
         :root {
+            color-scheme: light;
             --bg: #faf9f7;
             --bg-alt: #f3f1ee;
+            --surface: #fff;
             --text: #2c2c2c;
             --text-secondary: #5a5a5a;
             --text-muted: #8a8a8a;
@@ -23,10 +37,26 @@
             --accent-light: #2a5a8c;
             --link: #1a5276;
             --border: #e0ddd8;
+            --selection: rgba(26, 58, 92, 0.15);
             --serif: 'Crimson Pro', Georgia, serif;
             --sans: 'Inter', -apple-system, sans-serif;
             --mono: 'JetBrains Mono', 'Menlo', monospace;
             --max-w: 780px;
+        }
+
+        html[data-theme="dark"] {
+            color-scheme: dark;
+            --bg: #13171b;
+            --bg-alt: #1b2127;
+            --surface: #181e24;
+            --text: #ece9e3;
+            --text-secondary: #bec3c8;
+            --text-muted: #929aa2;
+            --accent: #9bc8eb;
+            --accent-light: #86b9df;
+            --link: #91c8f0;
+            --border: #303841;
+            --selection: rgba(145, 200, 240, 0.25);
         }
 
         html { scroll-behavior: smooth; }
@@ -38,9 +68,10 @@
             font-size: 15px;
             line-height: 1.7;
             -webkit-font-smoothing: antialiased;
+            transition: background-color 0.2s ease, color 0.2s ease;
         }
 
-        ::selection { background: rgba(26, 58, 92, 0.15); }
+        ::selection { background: var(--selection); }
 
         a { color: var(--link); text-decoration: none; }
         a:hover { text-decoration: underline; }
@@ -52,6 +83,7 @@
             z-index: 100;
             background: var(--bg);
             border-bottom: 1px solid var(--border);
+            transition: background-color 0.2s ease, border-color 0.2s ease;
         }
         .nav-inner {
             max-width: var(--max-w);
@@ -69,7 +101,7 @@
             text-decoration: none;
         }
         .nav-name:hover { text-decoration: none; color: var(--accent); }
-        .nav-links { display: flex; gap: 24px; list-style: none; }
+        .nav-links { display: flex; gap: 24px; list-style: none; order: 1; margin-left: auto; }
         .nav-links a {
             font-size: 13px;
             font-weight: 500;
@@ -79,7 +111,23 @@
             transition: color 0.15s;
         }
         .nav-links a:hover { color: var(--accent); text-decoration: none; }
-        .nav-toggle { display: none; background: none; border: none; cursor: pointer; padding: 4px; color: var(--text-secondary); }
+        .nav-actions { display: flex; align-items: center; gap: 8px; order: 2; margin-left: 16px; }
+        .theme-toggle, .nav-toggle {
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 5px;
+            color: var(--text-secondary);
+            border-radius: 5px;
+            transition: color 0.15s, background-color 0.15s;
+        }
+        .theme-toggle:hover, .nav-toggle:hover { color: var(--accent); background: var(--bg-alt); }
+        .theme-toggle:focus-visible, .nav-toggle:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+        .theme-toggle svg, .nav-toggle svg { display: block; width: 20px; height: 20px; }
+        .theme-toggle .sun-icon { display: none; }
+        html[data-theme="dark"] .theme-toggle .moon-icon { display: none; }
+        html[data-theme="dark"] .theme-toggle .sun-icon { display: block; }
+        .nav-toggle { display: none; }
         .nav-toggle svg { width: 22px; height: 22px; }
 
         @media (max-width: 640px) {
@@ -87,7 +135,8 @@
             .nav-links.open { display: flex; }
             .nav-toggle { display: block; }
             .nav-inner { flex-wrap: wrap; }
-            .nav-links { width: 100%; border-top: 1px solid var(--border); padding-top: 12px; margin-top: 8px; }
+            .nav-actions { margin-left: auto; }
+            .nav-links { order: 3; width: 100%; border-top: 1px solid var(--border); padding-top: 12px; margin: 8px 0 0; }
         }
 
         /* ─── Layout ─── */
@@ -227,8 +276,8 @@
             border: 1px solid var(--border);
             border-radius: 8px;
             padding: 20px;
-            background: #fff;
-            transition: border-color 0.2s;
+            background: var(--surface);
+            transition: background-color 0.2s ease, border-color 0.2s ease;
         }
         .proj-card:hover { border-color: var(--accent-light); }
         .proj-card h3 { font-family: var(--serif); font-size: 15.5px; font-weight: 600; color: var(--text); margin-bottom: 6px; }
@@ -277,9 +326,15 @@
     <nav>
         <div class="nav-inner">
             <a href="#" class="nav-name">Keshav Krishna</a>
-            <button class="nav-toggle" id="nav-toggle" aria-label="Toggle menu">
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"/></svg>
-            </button>
+            <div class="nav-actions">
+                <button class="theme-toggle" id="theme-toggle" type="button" aria-label="Switch to dark mode" aria-pressed="false" title="Switch to dark mode">
+                    <svg class="moon-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79Z"/></svg>
+                    <svg class="sun-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path stroke-linecap="round" d="M12 2v2M12 20v2M4.93 4.93l1.42 1.42M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.42-1.42M17.66 6.34l1.41-1.41"/></svg>
+                </button>
+                <button class="nav-toggle" id="nav-toggle" type="button" aria-label="Toggle menu">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"/></svg>
+                </button>
+            </div>
             <ul class="nav-links" id="nav-links">
                 <li><a href="#">About</a></li>
                 <li><a href="Keshav Krishna.pdf" target="_blank">CV</a></li>
@@ -617,6 +672,36 @@
     </footer>
 
     <script>
+        const themeToggle = document.getElementById('theme-toggle');
+        const themePreference = window.matchMedia('(prefers-color-scheme: dark)');
+
+        function syncThemeToggle() {
+            const isDark = document.documentElement.dataset.theme === 'dark';
+            const nextTheme = isDark ? 'light' : 'dark';
+            themeToggle.setAttribute('aria-pressed', String(isDark));
+            themeToggle.setAttribute('aria-label', `Switch to ${nextTheme} mode`);
+            themeToggle.setAttribute('title', `Switch to ${nextTheme} mode`);
+        }
+
+        themeToggle.addEventListener('click', () => {
+            const nextTheme = document.documentElement.dataset.theme === 'dark' ? 'light' : 'dark';
+            document.documentElement.dataset.theme = nextTheme;
+            try { localStorage.setItem('theme', nextTheme); } catch (_) {}
+            syncThemeToggle();
+        });
+
+        themePreference.addEventListener('change', event => {
+            try {
+                if (localStorage.getItem('theme')) return;
+            } catch (_) {
+                return;
+            }
+            document.documentElement.dataset.theme = event.matches ? 'dark' : 'light';
+            syncThemeToggle();
+        });
+
+        syncThemeToggle();
+
         document.getElementById('nav-toggle').addEventListener('click', function() {
             document.getElementById('nav-links').classList.toggle('open');
         });
