@@ -1,0 +1,150 @@
+\documentclass[10pt,letterpaper]{article}
+
+\usepackage[letterpaper,top=0.43in,bottom=0.43in,left=0.48in,right=0.48in]{geometry}
+\usepackage[T1]{fontenc}
+\usepackage{newpxtext,newpxmath}
+\usepackage{microtype}
+\usepackage{enumitem}
+\usepackage{titlesec}
+\usepackage{xcolor}
+\usepackage[hidelinks]{hyperref}
+\usepackage{tabularx}
+
+\hypersetup{
+  pdftitle={Keshav Krishna - Cloud and ML Systems Resume},
+  pdfauthor={Keshav Krishna},
+  pdfsubject={Software and Machine Learning Engineer}
+}
+
+\pagestyle{empty}
+\setlength{\parindent}{0pt}
+\setlength{\tabcolsep}{0pt}
+\setlength{\emergencystretch}{2em}
+\urlstyle{same}
+
+\titleformat{\section}
+  {\large\scshape}
+  {}{0pt}{}
+  [\vspace{0.1em}\titlerule]
+\titlespacing*{\section}{0pt}{1em}{0.55em}
+
+\setlist[itemize]{
+  label=--,
+  leftmargin=1.8em,
+  itemsep=0.25em,
+  topsep=0.25em,
+  parsep=0pt,
+  partopsep=0pt
+}
+
+\newcommand{\entry}[4]{%
+  \begin{tabularx}{\textwidth}{@{}Xr@{}}
+    \textbf{#1} & #2 \\
+    \textit{#3} & \textit{#4}
+  \end{tabularx}\vspace{-0.2em}
+}
+
+\newcommand{\project}[2]{%
+  \begin{tabularx}{\textwidth}{@{}Xr@{}}
+    \textbf{#1} & \textit{#2}
+  \end{tabularx}\vspace{-0.25em}
+}
+
+\begin{document}
+\fontsize{10.1}{12.7}\selectfont
+
+\begin{center}
+  {\fontsize{24}{27}\selectfont\scshape Keshav Krishna}\\[0.12em]
+  New York City, US $\mid$ +1 (479) 685 5463 $\mid$ \href{mailto:kk6081@nyu.edu}{kk6081@nyu.edu}\\[-0.05em]
+  \href{https://github.com/k-keshav-k}{GitHub} $\mid$
+  \href{https://k-keshav-k.github.io/}{Website} $\mid$
+  \href{https://www.linkedin.com/in/keshav-krishna-5054681a9/}{LinkedIn} $\mid$
+  \href{https://scholar.google.com/citations?user=zN7P_v4AAAAJ}{Google Scholar}\\[0.08em]
+  \textbf{Graduation: May 2027 $\mid$ Available to start: May 2027}
+\end{center}
+
+\vspace{0.25em}
+Software and machine learning engineer with three years of experience building production recommendation, personalization, and LLM systems for a consumer product serving 100M+ users. Experienced across the full ML lifecycle: data pipelines, model development, debugging, training, evaluation, inference, deployment, profiling, and iteration. Strong foundation in Python, C/C++, Linux, algorithms, system design, distributed data processing, and ML platform tooling.
+
+\section{Education}
+
+\entry{New York University, Courant Institute --- MS, Computer Science}{Aug 2025 -- May 2027}{GPA 3.95/4.0; Machine Learning, Building LLM Reasoners, Honors Algorithms}{New York City}
+
+\vspace{0.4em}
+\entry{Indian Institute of Technology, Ropar --- BTech, Computer Science and Engineering}{Aug 2019 -- Jun 2023}{GPA 8.74/10; Merit Scholarship for top academic performance}{Ropar, India}
+
+\section{Experience}
+
+\entry{Moore Capital Management --- Risk Technology Intern}{May 2026 -- Present}{Risk analytics and scalable data tooling; full-time summer, part-time fall}{New York City}
+\begin{itemize}
+  \item Built Python decision-support tools for portfolio and risk teams in a hedge-fund environment, combining data from multiple sources into clear, actionable analytics used in daily workflows.
+  \item Developed and benchmarked distributed data-processing tools across large-scale compute environments; used profiling and system modeling to identify scalability bottlenecks and guide infrastructure decisions.
+  \item Optimized Value at Risk (VaR), Conditional Value at Risk (CVaR), beta, and correlation calculations with vectorized Python and Numba JIT compilation; benchmarked implementations to reduce runtime on large financial datasets.
+\end{itemize}
+
+\vspace{0.5em}
+\entry{JioSaavn --- Software Engineer, Data Science}{Jul 2023 -- Jul 2025}{Production recommendation, personalization, and language-model systems}{Mumbai, India}
+\begin{itemize}
+  \item Built recommendation and personalization systems with embeddings, vector retrieval, Spark, and Hive tables backed by Azure Blob Storage through ABFS, driving \textbf{1M impressions, 800K clicks, and 500K streams per day} in a 100M+ user product.
+  \item Owned the ML lifecycle for a LLaMA3-8B-Instruct conversational playlist system, from intent modeling and retrieval-driven song selection through evaluation, inference, and deployment with Docker and Kubernetes.
+  \item Designed a reproducible evaluation across SetFit, HingRoBERTa, mURIL, and LLaMA3-8B-Instruct for multilingual moderation; built a labeled test set and selected a model achieving \textbf{85\% accuracy}.
+  \item Collaborated with product, editorial, and infrastructure teams to translate ambiguous requirements into production models, data pipelines, and services.
+\end{itemize}
+
+\vspace{0.5em}
+\entry{GE Healthcare --- Software Intern, Medical Computer Vision}{May 2022 -- Jul 2022}{Detection and de-identification pipelines for clinical imaging}{Bangalore, India}
+\begin{itemize}
+  \item Built and evaluated YOLO-based medical-image de-identification and RGB/IR people-detection pipelines over 20K+ images.
+\end{itemize}
+
+\section{Selected ML Systems Projects}
+
+\project{FlashAttention-2 --- Triton GPU Kernels \href{https://github.com/k-keshav-k/Flash-Attention}{[GitHub]}}{2026}
+\begin{itemize}
+  \item Implemented forward and backward attention kernels with tiled parallel work partitioning, online softmax, causal masking, and activation recomputation; reduced attention memory from $O(N^2)$ to $O(N)$ and enabled 65K-token sequences.
+  \item Built a Linux GPU profiling and benchmarking suite for Transformer models up to 2.7B parameters using NVIDIA Nsight Systems, CUDA memory snapshots, NVTX, mixed precision, and \texttt{torch.compile} baselines.
+\end{itemize}
+
+\newpage
+\section{Selected ML Systems Projects (continued)}
+
+\project{Transformer Language Model and Training Stack from Scratch \href{https://github.com/k-keshav-k/Large-Language-Models-from-Scratch}{[GitHub]}}{2026}
+\begin{itemize}
+  \item Built a 17M-parameter PyTorch language model from low-level components: BPE tokenization, RoPE, RMSNorm, SwiGLU, causal attention, AdamW, gradient clipping, checkpointing, and cosine learning-rate scheduling.
+  \item Implemented multiprocessing-based parallel tokenization, memory-mapped data loading, automated training sweeps, FLOPs and memory accounting, and systematic architecture ablations for reproducible model development and evaluation.
+\end{itemize}
+
+\vspace{0.55em}
+\project{Pico-LLM --- Training, Evaluation, and Inference Platform \href{https://github.com/k-keshav-k/pico-llm}{[GitHub]}}{2025}
+\begin{itemize}
+  \item Developed a unified platform for SFT and DPO/GRPO training, checkpoint management, batch evaluation, and inference across Transformer, LSTM, and K-gram architectures.
+  \item Added KV-cached generation, multi-GPU batch generation, automatic architecture detection, and robust token handling to improve inference throughput and experiment reliability.
+\end{itemize}
+
+\vspace{0.55em}
+\project{Phase-Adaptive Generation for Diffusion LMs \href{https://github.com/k-keshav-k/Phase-Assisted-Generation}{[GitHub]}}{Feb 2026 -- May 2026}
+\begin{itemize}
+  \item Analyzed per-token refinement traces and trained Transformer predictors over 138K control tuples to assign dynamic per-block inference budgets.
+  \item Integrated the predictor into the LLaDA decoding loop and matched AdaBlock's 89.5\% GSM8K accuracy with approximately \textbf{21\% fewer forward evaluations}; designed experiments to validate quality-efficiency tradeoffs. \href{https://github.com/k-keshav-k/Phase-Assisted-Generation/blob/main/writeup/final_report.pdf}{[Report]}
+\end{itemize}
+
+\vspace{0.55em}
+\project{ML-Driven Hardware Resource Optimization \href{https://github.com/k-keshav-k/ML-based-hardware-optimization-using-Phases}{[GitHub]}}{Jan 2026 -- May 2026}
+\begin{itemize}
+  \item Modeled temporal traces from multicore workloads, clustered hardware pressure states, and distilled them into compact predictors with sub-KB model state for dynamic resource-management decisions.
+\end{itemize}
+
+\section{Research and Publications}
+
+\begin{itemize}
+  \item \href{https://www.frontiersin.org/journals/artificial-intelligence/articles/10.3389/frai.2025.1441250/full}{\textit{Advancements in Cache Management: A Review of Machine Learning Innovations}} --- Frontiers in AI, 2025. Single-author review of 40+ papers on ML-driven cache and resource management.
+  \item \href{https://arxiv.org/abs/2410.15344}{\textit{LLC Intra-set Write Balancing for Non-Volatile Memory Caches}} --- arXiv, 2024. Bachelor's thesis research on system-level cache optimization.
+\end{itemize}
+
+\section{Technical Skills}
+
+\textbf{Programming and systems:} Python, C/C++, JavaScript, Linux, data structures and algorithms, system design, \mbox{multiprocessing}, distributed systems, Git\\
+\textbf{ML development lifecycle:} PyTorch, Hugging Face, vLLM, Triton, CUDA, model development, debugging, training, evaluation, inference, recommendation systems, vector search, SFT, GRPO, RLHF\\
+\textbf{Platforms and infrastructure:} Azure (Blob Storage, ABFS), Google Cloud Platform (GCP), Kubernetes, Docker, Spark, Hive, Airflow, Redis, Qdrant, Slurm/HPC, NVIDIA Nsight Systems, Numba JIT, FastAPI, Postgres
+
+\end{document}
